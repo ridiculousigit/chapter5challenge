@@ -16,4 +16,8 @@
     <string name="button_login">LOGIN</string>
     <string name="button_register">REGISTER</string>
     <string name="button_logout">LOGOUT</string>
+    <string name="button_back">BACK</string>
+    <string name="button_update">UPDATE</string>
+    <string name="button_delete">DELETE</string>
+    <string name="example_desc">Royal Canin Fit adalah makanan untuk kucing yang aktif di luar ruangan. Kucing yang aktif di luar ruangan memiliki akses terbuka untuk bertemu dengan hewan lain, seperti parasit yang mengganggu sistem kekebalan tubuhnya.</string>
 </resources>

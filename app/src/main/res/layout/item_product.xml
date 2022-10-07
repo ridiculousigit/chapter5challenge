@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivProduct"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginStart="4dp"
@@ -33,7 +33,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.448"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -46,33 +46,33 @@
             android:text=" Kategori :"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
 
         <TextView
             android:id="@+id/productCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="sans-serif-condensed"
             android:text="Teknologi"
             android:textColor="@color/ichi"
             android:textSize="16sp"
             android:textStyle="normal"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
         <TextView
             android:id="@+id/tvStock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Stok :"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toBottomOf="@+id/productCategory" />
 
         <TextView
@@ -100,7 +100,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/san"
             android:fontFamily="@font/valorant"
-            android:text="Update"
+            android:text="@string/button_update"
             android:textSize="12sp"
             app:icon="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +115,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/valorant"
-            android:text="Delete"
+            android:text="@string/button_delete"
             android:textSize="12sp"
             app:icon="@drawable/ic_delete"
             app:layout_constraintEnd_toEndOf="parent"

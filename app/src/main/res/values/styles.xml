@@ -15,9 +15,19 @@
         <item name="cornerRadius">20dp</item>
     </style>
 
-    <style name="textGreet">
+    <style name="headerCreate">
         <item name="android:textColor">@color/san</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="headerUpdate">
+        <item name="android:textColor">@color/ni</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="textDetail">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">serif</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">

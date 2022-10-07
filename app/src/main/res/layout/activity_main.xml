@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/tvGreet"
-        style="@style/textGreet"
+        style="@style/headerCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/mainUsername"
-        style="@style/textGreet"
+        style="@style/headerCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
