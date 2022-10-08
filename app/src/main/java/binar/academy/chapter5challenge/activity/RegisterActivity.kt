@@ -27,8 +27,8 @@ class RegisterActivity : AppCompatActivity() {
 
             if(edPassword.equals(edConfirm)) {
                 addUser(edUsername, edEmail, edPassword)
-
                 var move = Intent(this, LoginActivity :: class.java)
+                startActivity(move)
             } else errorPass("Password doesn't match !")
         }
     }

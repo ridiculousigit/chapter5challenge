@@ -13,30 +13,14 @@ import retrofit2.Response
 
 class ViewModelProduct: ViewModel() {
 
-    var ldProduct: MutableLiveData<List<ResponseDataProductItem>> = MutableLiveData()
-    private var putldProduct: MutableLiveData<List<ResponseDataProductItem>> = MutableLiveData()
-    private var postldProduct: MutableLiveData<ResponseDataProductItem> = MutableLiveData()
-    private var deleteldProduct: MutableLiveData<Int> = MutableLiveData()
-    var loading = MutableLiveData<Boolean>()
+    var detaildProduct: MutableLiveData<ResponseDataProductItem> = MutableLiveData()
+    var getldProduct: MutableLiveData<List<ResponseDataProductItem>> = MutableLiveData()
+    var putldProduct: MutableLiveData<ResponseDataProductItem> = MutableLiveData()
+    var postldProduct: MutableLiveData<ResponseDataProductItem> = MutableLiveData()
+    var deleteldProduct: MutableLiveData<String> = MutableLiveData()
 
     init {
         callAllProduct()
-    }
-
-    fun getldProduct(): MutableLiveData<List<ResponseDataProductItem>> {
-        return ldProduct
-    }
-
-    fun addldProduct(): MutableLiveData<ResponseDataProductItem> {
-        return postldProduct
-    }
-
-    fun updateldProduct(): MutableLiveData<List<ResponseDataProductItem>> {
-        return putldProduct
-    }
-
-    fun deleteldProduct(): MutableLiveData<Int> {
-        return deleteldProduct
     }
 
     fun callAllProduct() {
@@ -48,9 +32,9 @@ class ViewModelProduct: ViewModel() {
                         response: Response<List<ResponseDataProductItem>>
                     ) {
                         if (response.isSuccessful) {
-                            ldProduct.postValue(response.body())
+                            getldProduct.postValue(response.body())
                         } else {
-                            ldProduct.postValue(null)
+                            getldProduct.postValue(null)
                         }
                     }
 
@@ -58,7 +42,7 @@ class ViewModelProduct: ViewModel() {
                         call: Call<List<ResponseDataProductItem>>,
                         t: Throwable
                     ) {
-                        ldProduct.postValue(null)
+                        getldProduct.postValue(null)
                     }
                 })
         }
@@ -72,77 +56,73 @@ class ViewModelProduct: ViewModel() {
                     response: Response<ResponseDataProductItem>
                 ) {
                     if (response.isSuccessful) {
-                        ldProduct.postValue(response.body())
+                        postldProduct.postValue(response.body())
                     } else {
-                        ldProduct.postValue(null)
+                        postldProduct.postValue(null)
                     }
-                    callAllProduct()
                 }
 
                 override fun onFailure(call: Call<ResponseDataProductItem>, t: Throwable) {
-                    ldProduct.postValue(null)
-                    callAllProduct()
+                    postldProduct.postValue(null)
                 }
             })
     }
 
-    fun callPutProduct(id: Int, name: String, category: String, stock: Int, price: Int, desc: String, image: String) {
+    fun callPutProduct(id: String, name: String, category: String, stock: Int, price: Int, desc: String, image: String) {
         RetrofitProduct.instance.updateProduct(id, DataProduct(name, category, stock, price, desc, image))
-            .enqueue(object : Callback<List<ResponseDataProductItem>> {
+            .enqueue(object : Callback<ResponseDataProductItem> {
                 override fun onResponse(
-                    call: Call<List<ResponseDataProductItem>>,
-                    response: Response<List<ResponseDataProductItem>>
+                    call: Call<ResponseDataProductItem>,
+                    response: Response<ResponseDataProductItem>
                 ) {
                     if (response.isSuccessful) {
-                        ldProduct.postValue(response.body())
+                        putldProduct.postValue(response.body())
                     } else {
-                        ldProduct.postValue(null)
+                        putldProduct.postValue(null)
                     }
-                    callAllProduct()
                 }
 
-                override fun onFailure(call: Call<List<ResponseDataProductItem>>, t: Throwable) {
-                    ldProduct.postValue(null)
+                override fun onFailure(call: Call<ResponseDataProductItem>, t: Throwable) {
+                    putldProduct.postValue(null)
                 }
             })
     }
     
-    fun callDeleteProduct(id: Int) {
+    fun callDeleteProduct(id: String) {
         GlobalScope.async { 
             RetrofitProduct.instance.deleteProduct(id)
-                .enqueue(object :Callback<Int> {
-                    override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                .enqueue(object :Callback<String> {
+                    override fun onResponse(call: Call<String>, response: Response<String>) {
                         if (response.isSuccessful) {
-                            ldProduct.postValue(response.body())
+                            deleteldProduct.postValue(response.body())
                         } else {
-                            ldProduct.postValue(null)
+                            deleteldProduct.postValue(null)
                         }
-                        callAllProduct()
                     }
 
-                    override fun onFailure(call: Call<Int>, t: Throwable) {
-                        ldProduct.postValue(null)
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        deleteldProduct.postValue(null)
                     }
                 })
         }
     }
 
-    fun callDetailApiProduct(id : Int){
+    fun callDetailApiProduct(id : String){
         RetrofitProduct.instance.getDetail(id)
-            .enqueue(object : Callback<List<ResponseDataProductItem>>{
+            .enqueue(object : Callback<ResponseDataProductItem>{
                 override fun onResponse(
-                    call: Call<List<ResponseDataProductItem>>,
-                    response: Response<List<ResponseDataProductItem>>
+                    call: Call<ResponseDataProductItem>,
+                    response: Response<ResponseDataProductItem>
                 ) {
                     if (response.isSuccessful){
-                        ldProduct.postValue(response.body())
+                        detaildProduct.postValue(response.body())
                     }else{
-                        ldProduct.postValue(null)
+                        detaildProduct.postValue(null)
                     }
                 }
 
-                override fun onFailure(call: Call<List<ResponseDataProductItem>>, t: Throwable) {
-                    ldProduct.postValue(null)
+                override fun onFailure(call: Call<ResponseDataProductItem>, t: Throwable) {
+                    detaildProduct.postValue(null)
                 }
 
             })

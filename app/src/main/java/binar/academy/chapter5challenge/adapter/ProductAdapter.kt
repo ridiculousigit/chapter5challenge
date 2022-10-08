@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 
 class ProductAdapter(private var listProduct : List<ResponseDataProductItem>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-    var onDelete : ((Int)->Unit)? = null
+    var onDelete : ((String)->Unit)? = null
     var onEdit : ((ResponseDataProductItem)->Unit)? = null
     var onDetail : ((ResponseDataProductItem)->Unit)? = null
 

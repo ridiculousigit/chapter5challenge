@@ -2,6 +2,7 @@ package binar.academy.chapter5challenge.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ResponseDataProductItem(
     @SerializedName("category")
@@ -18,4 +19,4 @@ data class ResponseDataProductItem(
     val price: Int,
     @SerializedName("stock")
     val stock: Int
-)
+) : Serializable

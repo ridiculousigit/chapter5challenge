@@ -12,14 +12,14 @@ interface RestfulProduct {
     fun getAllProduct(): Call<List<ResponseDataProductItem>>
 
     @GET("product/{id}")
-    fun getDetail(@Path("id") id: Int): Call<List<ResponseDataUserItem>>
+    fun getDetail(@Path("id") id: String): Call<ResponseDataProductItem>
 
     @POST("product")
     fun addProduct(@Body product: DataProduct): Call<ResponseDataProductItem>
 
     @PUT("product/{id}")
-    fun updateProduct(@Path("id") id: Int, @Body product: DataProduct): Call<List<ResponseDataProductItem>>
+    fun updateProduct(@Path("id") id: String, @Body product: DataProduct): Call<ResponseDataProductItem>
 
     @DELETE("product/{id}")
-    fun deleteProduct(@Path("id") id: Int): Call<Int>
+    fun deleteProduct(@Path("id") id: String): Call<String>
 }

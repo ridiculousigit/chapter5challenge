@@ -21,7 +21,7 @@ class CreateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnCreate.setOnClickListener {
-            val create = Intent(this, MainActivity :: class.java)
+            createProduct()
         }
     }
 
@@ -35,10 +35,12 @@ class CreateActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProvider(this)[ViewModelProduct :: class.java]
         viewModel.callPostProduct(name, category, stock, price, desc, image)
-        viewModel.addldProduct().observe(this, Observer {
+        viewModel.postldProduct.observe(this, Observer {
             if (it != null) {
                 Toast.makeText(this, "New product has been added !", Toast.LENGTH_SHORT).show()
                 Log.d("addProduct", it.toString())
+                val create = Intent(this, MainActivity :: class.java)
+                startActivity(create)
             }
         })
     }

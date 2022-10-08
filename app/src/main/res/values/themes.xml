@@ -12,28 +12,25 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="TextAppearance.AppCompat.Display">
         <item name="fontFamily">@font/valorant</item>
     </style>
 
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/ichi</item>
+        <item name="backgroundColor">@color/ichi</item>
         <item name="strokeWidth">5dp</item>
         <item name="strokeColor">@color/ni</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="Widget.App.Update" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/ichi</item>
+        <item name="backgroundColor">@color/ichi</item>
         <item name="strokeWidth">5dp</item>
         <item name="strokeColor">@color/san</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="Widget.App.Logout" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/ichi</item>
+        <item name="backgroundColor">@color/ichi</item>
         <item name="strokeWidth">5dp</item>
         <item name="strokeColor">@color/san</item>
         <item name="cornerRadius">20dp</item>
