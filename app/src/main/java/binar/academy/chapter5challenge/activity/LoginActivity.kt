@@ -32,6 +32,11 @@ class LoginActivity : AppCompatActivity() {
             if (edUsername != null && edPassword != null) readAccount(edUsername, edPassword)
             else if (edUsername == null && edPassword == null) emptyField("Please fill all fields !")
         }
+
+        binding.registerHere.setOnClickListener {
+            val move = Intent(this, RegisterActivity :: class.java)
+            startActivity(move)
+        }
     }
 
     fun emptyField(message: String) {
@@ -61,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                                     addUser.apply()
 
                                     emptyField("Login Success!")
-                                    val move = Intent(this@LoginActivity, MainActivity::class.java)
+                                    val move = Intent(this@LoginActivity, MainActivity :: class.java)
                                     startActivity(move)
                                 }
                             }

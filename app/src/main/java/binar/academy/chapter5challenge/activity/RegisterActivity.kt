@@ -31,6 +31,11 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(move)
             } else errorPass("Password doesn't match !")
         }
+
+        binding.loginHere.setOnClickListener {
+            val move = Intent(this, LoginActivity :: class.java)
+            startActivity(move)
+        }
     }
 
     fun errorPass(message: String) {
