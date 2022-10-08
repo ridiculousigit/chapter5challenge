@@ -1,5 +1,6 @@
 package binar.academy.chapter5challenge.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import binar.academy.chapter5challenge.databinding.ActivityDetailBinding
@@ -24,5 +25,10 @@ class DetailActivity : AppCompatActivity() {
         binding.detailPrice.text = dataProduct.price.toString()
         binding.detailDesc.text = dataProduct.description
         Glide.with(this).load(dataProduct.image).into(binding.detailPict)
+
+        binding.btnBack.setOnClickListener {
+            val move = Intent(this, MainActivity :: class.java)
+            startActivity(move)
+        }
     }
 }

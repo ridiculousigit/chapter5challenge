@@ -155,7 +155,7 @@
         app:startIconDrawable="@drawable/ic_image">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addImage"
+            android:id="@+id/updateImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -164,7 +164,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnCreate"
+        android:id="@+id/btnUpdate"
         style="@style/Widget.App.Update"
         android:layout_width="match_parent"
         android:layout_height="60dp"

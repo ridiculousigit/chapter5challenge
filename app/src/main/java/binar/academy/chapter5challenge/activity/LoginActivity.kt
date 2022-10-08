@@ -5,10 +5,12 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import binar.academy.chapter5challenge.adapter.UserAdapter
 import binar.academy.chapter5challenge.databinding.ActivityLoginBinding
 import binar.academy.chapter5challenge.model.ResponseDataUserItem
 import binar.academy.chapter5challenge.network.RetrofitUser
+import binar.academy.chapter5challenge.viewmodel.ViewModelUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -56,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                         if(response.body() != null){
                             val respon = response.body()
                             for (i in 0 until respon!!.size){
-                                if(respon[i].username == username && respon[i].password == password){
+                                if(respon[i].username.equals(username, ignoreCase = true) && respon[i].password.equals(password, ignoreCase = true)){
                                     data = true
 
                                     //add ke sharedpref

@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.mainUsername.text =
+
         binding.btnAdd.setOnClickListener {
             val intent = Intent(this, CreateActivity :: class.java)
             startActivity(intent)
