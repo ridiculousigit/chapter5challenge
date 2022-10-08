@@ -1,12 +1,45 @@
 package binar.academy.chapter5challenge.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import binar.academy.chapter5challenge.R
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import binar.academy.chapter5challenge.databinding.ActivityCreateBinding
+import binar.academy.chapter5challenge.viewmodel.ViewModelProduct
 
 class CreateActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCreateBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create)
+
+        binding = ActivityCreateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnCreate.setOnClickListener {
+            val create = Intent(this, MainActivity :: class.java)
+        }
+    }
+
+    fun createProduct() {
+        val name = binding.addName.text.toString()
+        val category = binding.addCategory.text.toString()
+        val stock = binding.addStock.text.toString().toInt()
+        val price = binding.addPrice.text.toString().toInt()
+        val desc = binding.addDescription.text.toString()
+        val image = binding.addImage.text.toString()
+
+        val viewModel = ViewModelProvider(this)[ViewModelProduct :: class.java]
+        viewModel.callPostProduct(name, category, stock, price, desc, image)
+        viewModel.addldProduct().observe(this, Observer {
+            if (it != null) {
+                Toast.makeText(this, "New product has been added !", Toast.LENGTH_SHORT).show()
+                Log.d("addProduct", it.toString())
+            }
+        })
     }
 }
