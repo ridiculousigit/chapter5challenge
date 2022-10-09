@@ -1,6 +1,8 @@
 package binar.academy.chapter5challenge.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +13,15 @@ import binar.academy.chapter5challenge.viewmodel.ViewModelUser
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterBinding
+    lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPref = getSharedPreferences("userRegister", Context.MODE_PRIVATE)
 
         binding.btnRegister.setOnClickListener {
 
@@ -47,6 +52,11 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.callPostUser(username, email, password)
         viewModel.addldUser().observe(this, {
             if (it != null) {
+                val addUser = sharedPref.edit()
+                addUser.putString("usernameRegister", username)
+                addUser.putString("emailRegister", email)
+                addUser.putString("passwordRegister", password)
+                addUser.apply()
                 Toast.makeText(this, "Account has been created !", Toast.LENGTH_SHORT).show()
             }
         })

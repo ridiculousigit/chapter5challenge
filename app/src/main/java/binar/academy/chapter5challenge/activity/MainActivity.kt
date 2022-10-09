@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
             this, LinearLayoutManager.VERTICAL, false
         )
 
-        val sharedPref = getSharedPreferences("dataUser", Context.MODE_PRIVATE)
-        binding.mainUsername.text = sharedPref.getString("username", "")
+        val sharedPref = getSharedPreferences("userRegister", Context.MODE_PRIVATE)
+        binding.mainUsername.text = sharedPref.getString("emailRegister", "")
 
         binding.btnAdd.setOnClickListener {
             val intent = Intent(this@MainActivity, CreateActivity::class.java)
