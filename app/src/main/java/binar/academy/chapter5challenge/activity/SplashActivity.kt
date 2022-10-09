@@ -3,17 +3,17 @@ package binar.academy.chapter5challenge.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
 import binar.academy.chapter5challenge.R
 import binar.academy.chapter5challenge.databinding.ActivitySplashBinding
+import com.bumptech.glide.Glide
 
 class SplashActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivitySplashBinding
-    lateinit var sharedPref: SharedPreferences
+    private lateinit var binding: ActivitySplashBinding
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,27 +21,28 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
-        var dbUser = sharedPref.getString("username", "")
+        Glide.with(this).load(R.drawable.anim_splash).into(binding.ivSplash)
 
-        //splash : seleksi data di sharedpreferencenya ada atau ngga.
+        sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+        val dbUser = sharedPref.getString("username", "")
+
         if(dbUser == "") {
-            var dbUsername = sharedPref.getString("username", "You!")
-            var bundle = Bundle()
+            val dbUsername = sharedPref.getString("username", "You!")
+            val bundle = Bundle()
             bundle.putString("username", dbUsername)
 
             Handler().postDelayed({
                 val intent = Intent(this, LoginActivity :: class.java)
                 startActivity(intent)
                 finish()
-            }, 3000)
+            }, 1000)
         }
         else {
             Handler().postDelayed({
                 val intent = Intent(this, MainActivity :: class.java)
                 startActivity(intent)
                 finish()
-            }, 3000)
+            }, 2000)
         }
     }
 }

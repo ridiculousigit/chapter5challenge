@@ -20,12 +20,14 @@ class CreateActivity : AppCompatActivity() {
         binding = ActivityCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Button Create
         binding.btnCreate.setOnClickListener {
             createProduct()
         }
     }
 
-    fun createProduct() {
+    // Method for create a new data product
+    private fun createProduct() {
         val name = binding.addName.text.toString()
         val category = binding.addCategory.text.toString()
         val stock = binding.addStock.text.toString().toInt()
@@ -37,7 +39,7 @@ class CreateActivity : AppCompatActivity() {
         viewModel.callPostProduct(name, category, stock, price, desc, image)
         viewModel.postldProduct.observe(this, Observer {
             if (it != null) {
-                Toast.makeText(this, "New product has been added !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Produk baru berhasil ditambahkan !", Toast.LENGTH_SHORT).show()
                 Log.d("addProduct", it.toString())
                 val create = Intent(this, MainActivity :: class.java)
                 startActivity(create)

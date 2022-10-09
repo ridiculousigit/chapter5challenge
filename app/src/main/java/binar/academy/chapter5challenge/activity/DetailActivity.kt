@@ -18,6 +18,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Get product data by ID from API
         dataProduct = intent.getSerializableExtra("detail") as ResponseDataProductItem
         binding.detailHeader.text = dataProduct.name
         binding.detailCategory.text = dataProduct.category
@@ -26,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
         binding.detailDesc.text = dataProduct.description
         Glide.with(this).load(dataProduct.image).into(binding.detailPict)
 
+        // Button Back to Main Page
         binding.btnBack.setOnClickListener {
             val move = Intent(this, MainActivity :: class.java)
             startActivity(move)

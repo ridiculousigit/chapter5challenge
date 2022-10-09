@@ -41,10 +41,11 @@
         style="@style/textDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Kategori :"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailHeader" />
 
@@ -53,10 +54,11 @@
         style="@style/textDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
         android:layout_marginTop="16dp"
         android:text="Stok :"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvKategori" />
 
@@ -65,10 +67,11 @@
         style="@style/textDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
         android:layout_marginTop="16dp"
         android:text="Harga :"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStok" />
 
@@ -78,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Hewan Peliharaan"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +99,7 @@
         android:text="56"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toEndOf="@+id/tvStok"
         app:layout_constraintTop_toBottomOf="@+id/detailCategory" />
 
@@ -124,7 +127,7 @@
         android:text="65000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toEndOf="@+id/tvRupiah"
         app:layout_constraintTop_toBottomOf="@+id/detailStock" />
 
@@ -138,7 +141,8 @@
         android:layout_marginEnd="16dp"
         android:text="@string/example_desc"
         android:textAlignment="center"
-        android:textSize="17sp"
+        android:textColor="@color/roku"
+        android:textSize="22sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

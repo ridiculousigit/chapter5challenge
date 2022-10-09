@@ -13,116 +13,126 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--Product Image-->
         <ImageView
             android:id="@+id/ivProduct"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCategory"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/bg_product" />
 
+        <!--Product Name-->
         <TextView
             android:id="@+id/productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-black"
+            android:layout_marginTop="24dp"
             android:text="LG 24 LED 24GN600-B Ultragear 144 Hz"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.448"
-            app:layout_constraintStart_toEndOf="@+id/ivProduct"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--Product Category-->
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_marginTop="16dp"
             android:text=" Kategori :"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
 
+        <!--Product Category Value-->
         <TextView
             android:id="@+id/productCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="sans-serif-condensed"
+
+            android:layout_marginTop="4dp"
             android:text="Teknologi"
+            android:textAlignment="viewStart"
             android:textColor="@color/ichi"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.091"
             app:layout_constraintStart_toEndOf="@+id/ivProduct"
             app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
+        <!--Product Stock-->
         <TextView
             android:id="@+id/tvStock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_marginTop="20dp"
             android:text="Stok :"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
             app:layout_constraintStart_toEndOf="@+id/ivProduct"
-            app:layout_constraintTop_toBottomOf="@+id/productCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/productCategory"
+            app:layout_constraintVertical_bias="0.105" />
 
+        <!--Product Stock Value-->
         <TextView
             android:id="@+id/productStock"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed"
+            android:layout_marginStart="8dp"
             android:text="92"
             android:textColor="@color/teal_700"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvStock"
-            app:layout_constraintTop_toBottomOf="@+id/productCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/productCategory"
+            app:layout_constraintVertical_bias="0.619" />
 
+        <!--Button Update-->
         <Button
             android:id="@+id/itemUpdate"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="115dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/san"
-            android:fontFamily="@font/valorant"
             android:text="@string/button_update"
             android:textSize="12sp"
             app:icon="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.849"
+            app:layout_constraintHorizontal_bias="0.847"
             app:layout_constraintStart_toEndOf="@+id/productCategory"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
 
+        <!--Button Delete-->
         <Button
             android:id="@+id/itemDelete"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="115dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/valorant"
             android:text="@string/button_delete"
             android:textSize="12sp"
             app:icon="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.849"
+            app:layout_constraintHorizontal_bias="0.847"
             app:layout_constraintStart_toEndOf="@+id/productCategory"
-            app:layout_constraintTop_toBottomOf="@+id/itemUpdate" />
+            app:layout_constraintTop_toBottomOf="@+id/itemUpdate"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

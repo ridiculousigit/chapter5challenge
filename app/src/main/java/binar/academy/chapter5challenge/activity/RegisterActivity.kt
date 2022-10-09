@@ -1,8 +1,6 @@
 package binar.academy.chapter5challenge.activity
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +10,7 @@ import binar.academy.chapter5challenge.viewmodel.ViewModelUser
 
 class RegisterActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityRegisterBinding
-    lateinit var sharedPref: SharedPreferences
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,43 +18,40 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPref = getSharedPreferences("userRegister", Context.MODE_PRIVATE)
-
+        // Button Register
         binding.btnRegister.setOnClickListener {
+            val edUsername = binding.registerUsername.text.toString()
+            val edEmail = binding.registerEmail.text.toString()
+            val edPassword = binding.registerPassword.text.toString()
+            val edConfirm = binding.registerConfirm.text.toString()
 
-            var edUsername = binding.registerUsername.text.toString()
-            var edEmail = binding.registerEmail.text.toString()
-            var edPassword = binding.registerPassword.text.toString()
-            var edConfirm = binding.registerConfirm.text.toString()
-
+            // It will identifying whether pass == confirm pass
             if(edPassword.equals(edConfirm)) {
                 addUser(edUsername, edEmail, edPassword)
-                var move = Intent(this, LoginActivity :: class.java)
+                val move = Intent(this, LoginActivity :: class.java)
                 startActivity(move)
-            } else errorPass("Password doesn't match !")
+            } else errorPass("Password tidak cocok !")
         }
 
+        // Login Option
         binding.loginHere.setOnClickListener {
             val move = Intent(this, LoginActivity :: class.java)
             startActivity(move)
         }
     }
 
-    fun errorPass(message: String) {
+    // It will throws a response message for the activity performed by the user
+    private fun errorPass(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun addUser(username: String, email: String, password: String) {
-        var viewModel = ViewModelProvider(this).get(ViewModelUser :: class.java)
+    // Method for create a new user data
+    private fun addUser(username: String, email: String, password: String) {
+        val viewModel = ViewModelProvider(this)[ViewModelUser :: class.java]
         viewModel.callPostUser(username, email, password)
         viewModel.addldUser().observe(this, {
             if (it != null) {
-                val addUser = sharedPref.edit()
-                addUser.putString("usernameRegister", username)
-                addUser.putString("emailRegister", email)
-                addUser.putString("passwordRegister", password)
-                addUser.apply()
-                Toast.makeText(this, "Account has been created !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Akun berhasil dibuat !", Toast.LENGTH_SHORT).show()
             }
         })
     }

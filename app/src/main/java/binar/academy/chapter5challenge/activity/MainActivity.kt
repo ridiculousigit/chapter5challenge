@@ -1,8 +1,8 @@
 package binar.academy.chapter5challenge.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +17,8 @@ import binar.academy.chapter5challenge.viewmodel.ViewModelProduct
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ViewModelProduct
-    lateinit var binding: ActivityMainBinding
-    lateinit var productAdapter: ProductAdapter
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +26,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(ViewModelProduct::class.java)
+        viewModel = ViewModelProvider(this)[ViewModelProduct::class.java]
         binding.rvProduct.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.VERTICAL, false
         )
 
-        val sharedPref = getSharedPreferences("userRegister", Context.MODE_PRIVATE)
-        binding.mainUsername.text = sharedPref.getString("emailRegister", "")
+        // It will throw the user's username at Main Page
+        val sharedPref = getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+        binding.mainUsername.text = sharedPref.getString("username", "")
 
+        // Button Add (Create)
         binding.btnAdd.setOnClickListener {
             val intent = Intent(this@MainActivity, CreateActivity::class.java)
             startActivity(intent)
         }
 
+        // Button Logout
         binding.btnLogout.setOnClickListener {
             with(sharedPref.edit()) {
                 this.putString("username", "")
@@ -49,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
-
+        viewModeltoAdapter()
     }
 
     override fun onResume() {
@@ -57,9 +60,10 @@ class MainActivity : AppCompatActivity() {
         viewModeltoAdapter()
     }
 
-    fun viewModeltoAdapter() {
+    @SuppressLint("NotifyDataSetChanged")
+    private fun viewModeltoAdapter() {
         viewModel.getldProduct.observe(this, Observer {
-            Log.d("response", "viewModeltoAdapter : " + it.toString())
+            Log.d("response", "viewModeltoAdapter : $it")
             if (it != null) {
                 productAdapter = ProductAdapter(it)
                 binding.rvProduct.adapter = productAdapter
@@ -71,12 +75,22 @@ class MainActivity : AppCompatActivity() {
                     })
                 }
 
-                productAdapter.onDetail = {
-                    var dataProduct = it
-                    var move = Intent(this, DetailActivity::class.java)
-                    startActivity(move)
+                productAdapter.onEdit = {
+                    val dataProduct = it
+                    val edit = Intent(this, UpdateActivity :: class.java)
+                    intent.putExtra("update", dataProduct)
+                    startActivity(edit)
                 }
+
+                productAdapter.onDetail = {
+                    val dataProduct = it
+                    val detail = Intent(this, DetailActivity::class.java)
+                    intent.putExtra("detail", dataProduct)
+                    startActivity(detail)
+                }
+                productAdapter.notifyDataSetChanged()
             }
         })
+        viewModel.callAllProduct()
     }
 }
