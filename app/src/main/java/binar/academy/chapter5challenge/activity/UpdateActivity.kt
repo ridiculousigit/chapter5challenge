@@ -23,8 +23,8 @@ class UpdateActivity : AppCompatActivity() {
         detail = intent.getSerializableExtra("update") as ResponseDataProductItem
         binding.updateName.setText(detail.name)
         binding.updateCategory.setText(detail.category)
-        binding.updateStock.setText(detail.stock).toString()
-        binding.updatePrice.setText(detail.price).toString()
+        binding.updateStock.setText(detail.stock.toString())
+        binding.updatePrice.setText(detail.price.toString())
         binding.updateDescription.setText(detail.description)
         binding.updateImage.setText(detail.image)
 
@@ -38,7 +38,6 @@ class UpdateActivity : AppCompatActivity() {
             val productImage = detail.image
 
             updateDataProduct(productId, productName, productCategory, productStock, productPrice, productDesc, productImage)
-            finish()
         }
     }
 
@@ -48,6 +47,7 @@ class UpdateActivity : AppCompatActivity() {
         viewModel.putldProduct.observe(this, Observer {
             if (it != null) {
                 Toast.makeText(this, "Update nih", Toast.LENGTH_SHORT).show()
+                finish()
             }
         })
     }
