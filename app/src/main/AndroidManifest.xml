@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="binar.academy.chapter5challenge">
 
+    <!--Android Permission to Access Internet on User Device-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

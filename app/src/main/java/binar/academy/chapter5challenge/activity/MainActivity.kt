@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 productAdapter.onDelete = {
                     viewModel.callDeleteProduct(it)
                     viewModel.deleteldProduct.observe(this, Observer {
-                        Toast.makeText(this, "Data has been deleted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Data berhasil dihapus !", Toast.LENGTH_SHORT).show()
                     })
                 }
 
@@ -89,6 +89,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(detail)
                 }
                 productAdapter.notifyDataSetChanged()
+                /*
+                Notifies the attached observers that the underlying data has been changed
+                and any View reflecting the data set should refresh itself
+                */
             }
         })
         viewModel.callAllProduct()

@@ -12,6 +12,7 @@ import binar.academy.chapter5challenge.network.RetrofitUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +26,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sharedPref = getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+
+        // Button switch to English language
+        binding.tvengLogin.setOnClickListener {
+            setLocale("en")
+        }
+
+        // Button switch to Indonesian language
+        binding.tvinaLogin.setOnClickListener {
+            setLocale("id")
+        }
 
         // Button Login
         binding.btnLogin.setOnClickListener {
@@ -83,5 +94,16 @@ class LoginActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<List<ResponseDataUserItem>>, t: Throwable) {}
             })
+    }
+
+    // Bilingual localization (English & Indonesian)
+    fun setLocale(lang: String?) {
+        val myLocale = Locale(lang)
+        val res = resources
+        val config = res.configuration
+        config.locale = myLocale
+        res.updateConfiguration(config, res.displayMetrics)
+        startActivity(Intent(this, LoginActivity :: class.java))
+        finish()
     }
 }

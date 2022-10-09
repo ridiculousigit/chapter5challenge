@@ -1,23 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">chapter5challenge</string>
     <string name="lang_first_option">INA</string>
     <string name="lang_second_option">ENG</string>
-    <string name="login_header">Masuk untuk Melanjutkan</string>
-    <string name="register_header">Buat Akun Baru</string>
-    <string name="username_field">Masukkan Username</string>
-    <string name="email_field">Masukkan Email</string>
-    <string name="password_field">Masukkan Sandi</string>
-    <string name="confirm_field">Konfirmasi Sandi</string>
-    <string name="register_ask">Belum Punya Akun ?</string>
-    <string name="register_here">Daftar Disini</string>
-    <string name="login_ask">Sudah Punya Akun ?</string>
-    <string name="login_here">Masuk Disini</string>
-    <string name="button_login">MASUK</string>
-    <string name="button_register">DAFTAR</string>
-    <string name="button_logout">KELUAR</string>
-    <string name="button_back">KEMBALI</string>
-    <string name="button_create">BUAT</string>
-    <string name="button_update">UBAH</string>
-    <string name="button_delete">HAPUS</string>
+    <string name="login_header">Sign In to Continue</string>
+    <string name="register_header">Create New Account</string>
+    <string name="username_field">Input Username</string>
+    <string name="email_field">Input Email</string>
+    <string name="password_field">Input Password</string>
+    <string name="confirm_field">Confirm Password</string>
+    <string name="register_ask">Dont Have an Account Yet ?</string>
+    <string name="register_here">Register Here</string>
+    <string name="login_ask">Already Have an Account ?</string>
+    <string name="login_here">Login Here</string>
+    <string name="button_login">LOGIN</string>
+    <string name="button_register">REGISTER</string>
+    <string name="button_logout">LOGOUT</string>
+    <string name="button_back">BACK</string>
+    <string name="button_create">CREATE</string>
+    <string name="button_update">UPDATE</string>
+    <string name="button_delete">DELETE</string>
     <string name="example_desc">Royal Canin Fit adalah makanan untuk kucing yang aktif di luar ruangan. Kucing yang aktif di luar ruangan memiliki akses terbuka untuk bertemu dengan hewan lain, seperti parasit yang mengganggu sistem kekebalan tubuhnya.</string>
 </resources>

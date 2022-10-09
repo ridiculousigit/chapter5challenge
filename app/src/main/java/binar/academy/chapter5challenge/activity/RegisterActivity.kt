@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import binar.academy.chapter5challenge.databinding.ActivityRegisterBinding
 import binar.academy.chapter5challenge.viewmodel.ViewModelUser
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -17,6 +18,16 @@ class RegisterActivity : AppCompatActivity() {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Button switch to English language
+        binding.tvengRegister.setOnClickListener {
+            setLocale("en")
+        }
+
+        // Button switch to Indonesian language
+        binding.tvinaRegister.setOnClickListener {
+            setLocale("id")
+        }
 
         // Button Register
         binding.btnRegister.setOnClickListener {
@@ -54,5 +65,16 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Akun berhasil dibuat !", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    // Bilingual localization (English & Indonesian)
+    fun setLocale(lang: String?) {
+        val myLocale = Locale(lang)
+        val res = resources
+        val config = res.configuration
+        config.locale = myLocale
+        res.updateConfiguration(config, res.displayMetrics)
+        startActivity(Intent(this, RegisterActivity :: class.java))
+        finish()
     }
 }
