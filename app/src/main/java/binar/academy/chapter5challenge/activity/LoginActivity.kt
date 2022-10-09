@@ -60,12 +60,13 @@ class LoginActivity : AppCompatActivity() {
                         if(response.body() != null){
                             val respon = response.body()
                             for (i in 0 until respon!!.size){
-                                if(respon[i].username.equals(username, ignoreCase = true) && respon[i].password.equals(password, ignoreCase = true)){
+                                if(respon[i].email.equals(username, ignoreCase = true) && respon[i].password.equals(password, ignoreCase = true)){
                                     data = true
 
                                     //add ke sharedpref
                                     val addUser = sharedPref.edit()
-                                    addUser.putString("username", username)
+                                    addUser.putString("email", respon[i].email)
+                                    addUser.putString("username", respon[i].username)
                                     addUser.putString("password", password)
                                     addUser.apply()
 
