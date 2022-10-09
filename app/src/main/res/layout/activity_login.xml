@@ -62,11 +62,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginUsername"
-            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="@string/email_field" />
+            android:hint="@string/email_field"
+            android:textAllCaps="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,11 +89,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginPassword"
-            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="@string/password_field" />
+            android:hint="@string/password_field"
+            android:textAllCaps="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

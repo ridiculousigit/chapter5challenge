@@ -1,5 +1,6 @@
 package binar.academy.chapter5challenge.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -19,13 +20,14 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     lateinit var sharedPref: SharedPreferences
-    lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPref = getSharedPreferences("dataUser", Context.MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
             val edUsername = binding.loginUsername.text.toString()
@@ -79,9 +81,7 @@ class LoginActivity : AppCompatActivity() {
                     else emptyField("Failed Load Data!")
                 }
 
-                override fun onFailure(call: Call<List<ResponseDataUserItem>>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
+                override fun onFailure(call: Call<List<ResponseDataUserItem>>, t: Throwable) {}
             })
     }
 }
