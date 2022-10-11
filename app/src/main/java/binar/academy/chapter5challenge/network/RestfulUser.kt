@@ -14,5 +14,5 @@ interface RestfulUser {
     fun addUser(@Body request: DataUser): Call<ResponseDataUserItem>
 
     @PUT("user/{id}")
-    fun putUser(@Path("id") id: String, @Body request: DataUser): Call<List<ResponseDataUserItem>>
+    fun putUser(@Path("id") id: String, @Body request: DataUser): Call<ResponseDataUserItem>
 }

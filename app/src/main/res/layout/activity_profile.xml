@@ -88,6 +88,7 @@
             android:id="@+id/profileBirthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
             android:background="@color/white"
             android:hint="Birthday" />
 

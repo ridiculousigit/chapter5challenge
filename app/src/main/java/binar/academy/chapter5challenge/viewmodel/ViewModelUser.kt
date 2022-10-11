@@ -13,15 +13,11 @@ class ViewModelUser : ViewModel() {
 
     var ldUser: MutableLiveData<List<ResponseDataUserItem>> = MutableLiveData()
     var postldUser: MutableLiveData<ResponseDataUserItem> = MutableLiveData()
-
-
-    fun addldUser(): MutableLiveData<ResponseDataUserItem> {
-        return postldUser
-    }
+    var updateUser: MutableLiveData<ResponseDataUserItem> = MutableLiveData()
 
     fun callPostUser(username: String, email: String, password: String) {
-        RetrofitUser.instance.addUser(DataUser(username, email, password))
-            .enqueue(object :Callback<ResponseDataUserItem> {
+        RetrofitUser.instance.addUser(DataUser(username, email, password, null, "", null))
+            .enqueue(object : Callback<ResponseDataUserItem> {
                 override fun onResponse(
                     call: Call<ResponseDataUserItem>,
                     response: Response<ResponseDataUserItem>
@@ -40,7 +36,7 @@ class ViewModelUser : ViewModel() {
     }
 
     fun callAllUser() {
-        RetrofitUser.instance.getAllUser().enqueue(object :Callback<List<ResponseDataUserItem>> {
+        RetrofitUser.instance.getAllUser().enqueue(object : Callback<List<ResponseDataUserItem>> {
             override fun onResponse(
                 call: Call<List<ResponseDataUserItem>>,
                 response: Response<List<ResponseDataUserItem>>
@@ -58,22 +54,32 @@ class ViewModelUser : ViewModel() {
         })
     }
 
-    fun requestLoginUser(id: String, username: String, email: String, password: String) {
-        RetrofitUser.instance.putUser(id, DataUser(username, email, password))
-            .enqueue(object : Callback<List<ResponseDataUserItem>> {
+    fun update(id: String, fullName: String, address: String, birthDay: String) {
+        RetrofitUser.instance.putUser(
+            id,
+            DataUser(
+                fullname = fullName,
+                address = address,
+                birthday = birthDay,
+                email = null,
+                username = null,
+                password = null
+            )
+        )
+            .enqueue(object : Callback<ResponseDataUserItem> {
                 override fun onResponse(
-                    call: Call<List<ResponseDataUserItem>>,
-                    response: Response<List<ResponseDataUserItem>>
+                    call: Call<ResponseDataUserItem>,
+                    response: Response<ResponseDataUserItem>
                 ) {
                     if (response.isSuccessful) {
-                        ldUser.postValue(response.body())
+                        updateUser.postValue(response.body())
                     } else {
-                        ldUser.postValue(null)
+                        updateUser.postValue(null)
                     }
                 }
 
-                override fun onFailure(call: Call<List<ResponseDataUserItem>>, t: Throwable) {
-                    ldUser.postValue(null)
+                override fun onFailure(call: Call<ResponseDataUserItem>, t: Throwable) {
+                    updateUser.postValue(null)
                 }
             })
     }

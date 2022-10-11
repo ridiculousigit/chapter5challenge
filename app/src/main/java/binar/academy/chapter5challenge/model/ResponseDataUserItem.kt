@@ -15,7 +15,7 @@ data class ResponseDataUserItem(
     @SerializedName("address")
     val address: String,
     @SerializedName("birthday")
-    val birthday: Int,
+    val birthday: String,
     @SerializedName("email")
     val email: String,
     @SerializedName("fullname")

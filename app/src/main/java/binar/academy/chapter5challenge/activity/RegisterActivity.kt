@@ -60,11 +60,11 @@ class RegisterActivity : AppCompatActivity() {
     private fun addUser(username: String, email: String, password: String) {
         val viewModel = ViewModelProvider(this)[ViewModelUser :: class.java]
         viewModel.callPostUser(username, email, password)
-        viewModel.addldUser().observe(this, {
+        viewModel.postldUser.observe(this) {
             if (it != null) {
                 Toast.makeText(this, "Akun berhasil dibuat !", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
     // Bilingual localization (English & Indonesian)
