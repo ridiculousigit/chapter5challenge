@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="binar.academy.chapter5challenge">
-
-    <!--Android Permission to Access Internet on User Device-->
+    <!-- Android Permission to Access Internet on User Device -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,6 +16,9 @@
         android:theme="@style/Theme.Chapter5challenge"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DetailActivity"
             android:exported="false" />
         <activity
@@ -27,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,7 +45,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
